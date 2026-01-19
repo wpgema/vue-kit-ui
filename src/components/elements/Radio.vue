@@ -1,0 +1,50 @@
+<script setup>
+import { computed } from "vue";
+const props = defineProps({
+    name: { type: String, required: true },
+    label: { type: String, default: null },
+    options: { type: Array, required: true },
+    value: { type: String, default: "" },
+    onChange: { type: Function, default: null },
+    required: { type: Boolean, default: false },
+    error: { type: String, default: null },
+    horizontal: { type: Boolean, default: false },
+});
+const emit = defineEmits(["update:value"]);
+function selectValue(val) {
+    emit("update:value", val);
+    if (props.onChange) props.onChange(val);
+}
+const containerClass = computed(() =>
+    props.horizontal
+        ? "w-full flex items-center space-x-4 mb-3"
+        : "w-full flex flex-col mb-3"
+);
+const optionsClass = computed(() =>
+    props.horizontal ? "flex space-x-6" : "flex flex-col space-y-2"
+);
+</script>
+<template>
+    <div :class="containerClass">
+        <label v-if="label" class="text-sm font-semibold text-gray-800 mb-1" :class="horizontal ? 'mb-0' : ''">
+            {{ label }}
+            <span v-if="required" class="text-red-500">*</span>
+        </label>
+        <div :class="optionsClass">
+            <label v-for="opt in options" :key="opt.value"
+                class="flex items-center space-x-2 p-2 rounded-xl cursor-pointer transition-all duration-200"
+                @click="selectValue(opt.value)">
+                <input type="radio" class="hidden" :name="name" :value="opt.value" :checked="value === opt.value" />
+                <div class="w-4 h-4 rounded-full border flex items-center justify-center"
+                    :class="value === opt.value ? 'border-blue-500' : 'border-gray-400'">
+                    <div v-if="value === opt.value" class="w-2 h-2 bg-blue-500 rounded-full" />
+                </div>
+                <span v-if="opt.icon" class="text-gray-600">
+                    <component :is="opt.icon" />
+                </span>
+                <span class="text-sm text-gray-700">{{ opt.label }}</span>
+            </label>
+        </div>
+        <p v-if="error" class="text-red-500 text-xs mt-1">{{ error }}</p>
+    </div>
+</template>
