@@ -1,60 +1,42 @@
 <script setup>
-import { computed } from 'vue'
-
+import { computed } from "vue";
+import * as Icons from "lucide-vue-next";
+import { useRouter } from "vue-router";
 const props = defineProps({
-  variant: {
-    type: String,
-    default: 'primary',
-    validator: (v) =>
-      ['primary', 'secondary', 'danger'].includes(v),
-  },
-  size: {
-    type: String,
-    default: 'md',
-    validator: (v) =>
-      ['sm', 'md', 'lg'].includes(v),
-  },
-  loading: {
-    type: Boolean,
-    default: false,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-})
-
-const base =
-  'inline-flex items-center justify-center font-medium rounded-lg transition focus:outline-none'
-
-const variants = {
-  primary: 'bg-blue-600 text-white hover:bg-blue-700',
-  secondary: 'bg-gray-200 text-gray-800 hover:bg-gray-300',
-  danger: 'bg-red-600 text-white hover:bg-red-700',
+    to: { type: String, default: "/" },
+    onClick: { type: Function, default: null },
+    background: { type: String, default: "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500" },
+    color: { type: String, default: "text-white" },
+    classOther: { type: String, default: "" },
+    icon: { type: String, default: "" },
+    size: { type: Number, default: 16 },
+    stroke: { type: Number, default: 2 },
+    content: { type: String, default: "" },
+});
+const router = useRouter();
+const IconComponent = computed(() => {
+    if (!props.icon) return null;
+    return Icons[props.icon];
+});
+const baseClass = computed(() => {
+    return `
+        inline-flex items-center px-4 py-2 rounded-md 
+        focus:outline-none focus:ring-2 focus:ring-offset-2 
+        font-semibold text-sm 
+        ${props.background} ${props.color} ${props.classOther}
+    `;
+});
+function handleClick() {
+    if (props.onClick) {
+        props.onClick();
+    } else if (props.to) {
+        router.push(props.to);
+    }
 }
-
-const sizes = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-4 py-2 text-base',
-  lg: 'px-5 py-3 text-lg',
-}
-
-const classes = computed(() => [
-  base,
-  variants[props.variant],
-  sizes[props.size],
-  props.disabled || props.loading
-    ? 'opacity-50 cursor-not-allowed'
-    : '',
-])
 </script>
-
 <template>
-  <button
-    :class="classes"
-    :disabled="disabled || loading"
-  >
-    <span v-if="loading">Loading...</span>
-    <slot v-else />
-  </button>
+    <button :class="baseClass" @click="handleClick">
+        <component v-if="IconComponent" :is="IconComponent" :size="props.size" :stroke-width="props.stroke" />
+        {{ props.content }}
+    </button>
 </template>

@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+build/
+coverage/
+
+# Misc
+.DS_Store
+*.log
+.env
+.env.local
+.eslintcache
