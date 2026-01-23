@@ -35,7 +35,7 @@ function handleClick() {
 }
 </script>
 <template>
-    <button :class="baseClass" @click="handleClick">
+    <button :class="baseClass">
         <component v-if="IconComponent" :is="IconComponent" :size="props.size" :stroke-width="props.stroke" />
         {{ props.content }}
     </button>
