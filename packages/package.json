@@ -1,32 +1,31 @@
 {
-  "name": "vue-kit-ui",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wpgema/vue-kit-ui.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wpgema/vue-kit-ui/issues"
-  },
-  "homepage": "https://github.com/wpgema/vue-kit-ui#readme",
-  "description": "",
-  "dependencies": {
-    "autoprefixer": "^10.4.23",
-    "lucide-vue-next": "^0.563.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.18",
-    "vue": "^3.5.27",
-    "vue-router": "^4.6.4"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.3",
-    "vite": "^7.3.1"
-  }
+    "name": "vue-kit-ui",
+    "version": "1.0.0",
+    "description": "A reusable Vue 3 + Tailwind CSS UI component library",
+    "main": "index.js",
+    "module": "index.js",
+    "files": [
+        "index.js",
+        "ui",
+        "README.md"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "vue",
+        "vue3",
+        "component-library",
+        "ui-kit",
+        "tailwind"
+    ],
+    "author": "M. Gema Maulana",
+    "license": "MIT",
+    "peerDependencies": {
+        "vue": "^3.0.0",
+        "tailwindcss": "^3.0.0 || ^4.0.0"
+    },
+    "dependencies": {
+        "lucide-vue-next": "^0.563.0"
+    }
 }

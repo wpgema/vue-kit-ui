@@ -1,5 +1,20 @@
 <script setup>
+import { ref } from "vue";
 import { InputText, TextArea } from "../../packages/ui/src/components/input";
+import { Button } from "../../packages/ui/src/components/button";
+
+const username = ref("");
+const password = ref("");
+const description = ref("");
+const isLoading = ref(false);
+
+const startLoading = () => {
+    isLoading.value = true;
+    alert("Button clicked! Loading state activated for 2 seconds.");
+    setTimeout(() => {
+        isLoading.value = false;
+    }, 2000);
+};
 </script>
 
 <template>
@@ -9,7 +24,7 @@ import { InputText, TextArea } from "../../packages/ui/src/components/input";
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16 items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <span class="text-xl font-bold text-white">UI Vue Kit</span>
+                        <span class="text-xl font-bold text-white">Vue Kit UI</span>
                     </div>
                 </div>
             </div>
@@ -17,14 +32,53 @@ import { InputText, TextArea } from "../../packages/ui/src/components/input";
 
         <!-- Main Content -->
         <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-            <h1 class="text-3xl font-semibold">Component Playground</h1>
+            <h1 class="text-3xl font-semibold">Form Component Playground</h1>
+
+            <h2 class="text-xl font-medium">Button Examples</h2>
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
+                <div>
+                    <div class="flex gap-2 flex-wrap items-center mb-4">
+                        <Button>Primary</Button>
+                        <Button variant="secondary">Secondary</Button>
+                        <Button variant="danger">Danger</Button>
+                        <Button variant="outline">Outline</Button>
+                        <Button variant="yellow">Yellow</Button>
+                    </div>
+                    <div class="flex gap-2 flex-wrap items-center mb-4">
+                        <Button size="sm">Small</Button>
+                        <Button size="md">Medium</Button>
+                        <Button size="lg">Large</Button>
+                    </div>
+                    <div class="flex gap-2 flex-wrap items-center">
+                        <Button :loading="isLoading" @click="startLoading">Click to Load</Button>
+                        <Button disabled>Disabled</Button>
+                    </div>
+                </div>
+                <!-- Code Usage -->
+                <div class="p-4 rounded-md bg-white border border-gray-200 overflow-x-auto">
+                    <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
+                    <div class="bg-slate-50 p-3 rounded text-sm font-mono text-slate-700">
+                        <p class="mb-2">import { Button } from "../../packages/ui/src/components/button";</p>
+                        <p class="mb-1">&lt;Button variant="primary"&gt;Primary&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button variant="secondary"&gt;Secondary&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button variant="outline"&gt;Outline&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button variant="yellow"&gt;Yellow&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button size="sm"&gt;Small&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button size="md"&gt;Medium&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button size="lg"&gt;Large&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button :loading="isLoading" @click="startLoading"&gt;Loading&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button disabled&gt;Disabled&lt;/Button&gt;</p>
+                    </div>
+                </div>
+            </div>
+
             <h2 class="text-xl font-medium">Input Examples</h2>
             <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <div>
                     <div class="flex gap-2 flex-wrap">
                         <InputText
                             label="Username"
-                            name="search"
+                            name="username"
                             placeholder="Masukan Username"
                             v-model:value="username"
                             :error="false"
@@ -32,7 +86,7 @@ import { InputText, TextArea } from "../../packages/ui/src/components/input";
                         />
                         <InputText
                             label="Password"
-                            name="search"
+                            name="password"
                             placeholder="Masukan Password"
                             type="password"
                             v-model:value="password"
@@ -42,11 +96,11 @@ import { InputText, TextArea } from "../../packages/ui/src/components/input";
                     <div class="p-4 rounded-md bg-white border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="bg-slate-50 p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { InputText } from "vue-kit-ui";</p>
+                            <p class="mb-2">import { InputText } from "../../packages/ui/src/components/input";</p>
                             <p class="mb-1">
                                 &lt;InputText 
                                     label="Username"
-                                    name="search"
+                                    name="username"
                                     placeholder="Masukan Username"
                                     v-model:value="username"
                                     :error="false"
@@ -56,7 +110,7 @@ import { InputText, TextArea } from "../../packages/ui/src/components/input";
                             <p class="mb-1">
                                 &lt;InputText 
                                     label="Password"
-                                    name="search"
+                                    name="password"
                                     placeholder="Masukan Password"
                                     type="password"
                                     v-model:value="password"
@@ -79,7 +133,7 @@ import { InputText, TextArea } from "../../packages/ui/src/components/input";
                     <div class="p-4 rounded-md bg-white border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="bg-slate-50 p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { TextArea } from "vue-kit-ui";</p>
+                            <p class="mb-2">import { TextArea } from "../../packages/ui/src/components/input";</p>
                             <p class="mb-1">
                                 &lt;TextArea 
                                     label="Deskripsi"
