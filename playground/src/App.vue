@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle } from "vue-kit-ui";
 import { Button } from "vue-kit-ui";
 
@@ -22,6 +22,7 @@ const startLoading = () => {
         isLoading.value = false;
     }, 2000);
 };
+
 </script>
 
 <template>
@@ -233,7 +234,7 @@ const startLoading = () => {
                             name="terms"
                             label="I agree to the terms and conditions"
                             v-model="agree"
-                            :error="agree ? false : errorMsg"
+                            :error="!agree && errorMsg"
                             required
                         />
                     </div>

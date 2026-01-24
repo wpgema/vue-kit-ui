@@ -156,6 +156,7 @@ A standard text input field.
 | Prop         | Type             | Default | Description          |
 | ------------ | ---------------- | ------- | -------------------- |
 | label        | String           | -       | Label text displayed above the input |
+| name         | String           | -       | Input name attribute |
 | modelValue   | String, Number   | -       | **(v-model)** The input value |
 | placeholder  | String           | "Type something..." | Placeholder text |
 | type         | String           | "text"  | HTML input type (text, password, etc.) |
@@ -163,6 +164,8 @@ A standard text input field.
 | required     | Boolean          | false   | Marks text with an asterisk |
 | disabled     | Boolean          | false   | Disables the input |
 | readonly     | Boolean          | false   | Readonly state |
+| icon         | String, Object   | -       | Icon component or string |
+| iconPosition | String           | "left"  | Icon position (`left`, `right`) |
 
 ### TextArea
 
@@ -171,11 +174,14 @@ A multi-line text area component.
 | Prop         | Type             | Default | Description          |
 | ------------ | ---------------- | ------- | -------------------- |
 | label        | String           | -       | Label text displayed above the textarea |
+| name         | String           | -       | Input name attribute |
 | modelValue   | String           | ""      | **(v-model)** The textarea value |
 | rows         | Number           | 4       | Number of visible text lines |
 | placeholder  | String           | -       | Placeholder text |
 | error        | String, Boolean  | -       | Error message |
 | required     | Boolean          | false   | Marks label with an asterisk |
+| disabled     | Boolean          | false   | Disables the textarea |
+| readonly     | Boolean          | false   | Readonly state |
 
 ### InputSelect
 
@@ -184,25 +190,29 @@ A dropdown select component.
 | Prop        | Type             | Default | Description          |
 | ----------- | ---------------- | ------- | -------------------- |
 | label       | String           | -       | Label text displayed above the select |
+| name        | String           | -       | Input name attribute |
 | modelValue  | String, Number   | -       | **(v-model)** The selected value |
 | options     | Array            | []      | Array of objects `{ label, value }` |
 | placeholder | String           | "Select option..." | Placeholder text |
 | filter      | Boolean          | false   | Enable filtering |
 | error       | String           | -       | Error message |
 | required    | Boolean          | false   | Marks label with an asterisk |
+| valueLabel  | String           | -       | Label to display for the selected value (override) |
 
 ### FileUpload
 
 A file upload component with drag and drop support.
 
-| Prop        | Type             | Default | Description          |
-| ----------- | ---------------- | ------- | -------------------- |
-| label       | String           | -       | Label text |
-| modelValue  | Array            | []      | **(v-model)** Array of file objects |
-| accept      | String           | "*"     | File types to accept |
-| multiple    | Boolean          | false   | Allow multiple file selection |
-| required    | Boolean          | false   | Marks label with an asterisk |
-| placeholder | String           | "Click or drag files here" | Placeholder text |
+| Prop         | Type             | Default | Description          |
+| ------------ | ---------------- | ------- | -------------------- |
+| label        | String           | -       | Label text |
+| name         | String           | -       | Input name attribute |
+| modelValue   | Array            | []      | **(v-model)** Array of file objects |
+| accept       | String           | "*"     | File types to accept |
+| multiple     | Boolean          | false   | Allow multiple file selection |
+| multipleText | String           | "(multiple allowed)" | Text to show when multiple is allowed |
+| required     | Boolean          | false   | Marks label with an asterisk |
+| placeholder  | String           | "Click or drag files here" | Placeholder text |
 
 ### RadioInput
 
@@ -212,7 +222,7 @@ A radio button group component.
 | ---------- | -------- | ------- | -------------------- |
 | label      | String   | -       | Group label |
 | name       | String   | -       | **Required**. Input name attribute |
-| modelValue | String   | ""      | **(v-model)** Selected value |
+| modelValue | String, Number, Boolean   | ""      | **(v-model)** Selected value |
 | options    | Array    | []      | **Required**. Array of objects `{ label, value }` |
 | horizontal | Boolean  | false   | Display options horizontally |
 | error      | String   | -       | Error message |
@@ -225,9 +235,11 @@ A checkbox component.
 | Prop       | Type             | Default | Description          |
 | ---------- | ---------------- | ------- | -------------------- |
 | label      | String           | -       | Checkbox label |
+| name       | String           | -       | Input name attribute |
 | modelValue | Boolean          | false   | **(v-model)** Checked state |
 | error      | String, Boolean  | false   | Error state |
 | disabled   | Boolean          | false   | Disables the checkbox |
+| readonly   | Boolean          | false   | Readonly state |
 | required   | Boolean          | false   | Marks label with an asterisk |
 
 ### Toggle
@@ -237,11 +249,13 @@ A toggle switch component.
 | Prop             | Type             | Default | Description |
 | ---------------- | ---------------- | ------- | ----------- |
 | label            | String           | -       | Label text |
+| name             | String           | -       | Input name attribute |
 | modelValue       | Boolean          | false   | **(v-model)** Toggle state |
 | descriptionTrue  | String           | -       | Text when true (e.g. "On") |
 | descriptionFalse | String           | -       | Text when false (e.g. "Off") |
 | horizontal       | Boolean          | false   | Horizontal layout |
 | error            | String, Boolean  | -       | Error message |
+| required         | Boolean          | false   | Marks label with an asterisk |
 
 ---
 

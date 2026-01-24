@@ -11,11 +11,6 @@ const props = defineProps({
 });
 const emit = defineEmits(["update:modelValue"]);
 
-const selectedValue = computed({
-    get: () => props.modelValue,
-    set: (val) => emit("update:modelValue", val)
-});
-
 const containerClass = computed(() =>
     props.horizontal
         ? "w-full flex items-center space-x-4 mb-3"
@@ -24,6 +19,10 @@ const containerClass = computed(() =>
 const optionsClass = computed(() =>
     props.horizontal ? "flex space-x-6" : "flex flex-col space-y-1"
 );
+
+function handleChange(val) {
+    emit("update:modelValue", val);
+}
 </script>
 <template>
     <div :class="containerClass">
@@ -33,12 +32,12 @@ const optionsClass = computed(() =>
         </label>
         <div :class="optionsClass" role="radiogroup">
             <label v-for="opt in options" :key="opt.value"
-                class="flex items-center space-x-2 p-2 rounded-xl cursor-pointer transition-all duration-200 outline-none focus-within:ring-2 focus-within:ring-indigo-500"
-                :class="{ 'bg-indigo-50': selectedValue === opt.value }">
-                <input type="radio" class="sr-only" :name="name" :value="opt.value" v-model="selectedValue" />
+                class="flex items-center space-x-2 p-2 rounded-xl cursor-pointer transition-all duration-200 outline-none">
+                <input type="radio" class="sr-only" :name="name" :value="opt.value" :checked="modelValue === opt.value"
+                    @change="handleChange(opt.value)" />
                 <div class="w-5 h-5 rounded-full border flex items-center justify-center bg-white"
-                    :class="selectedValue === opt.value ? 'border-indigo-500' : 'border-gray-400'">
-                    <div v-if="selectedValue === opt.value" class="w-3 h-3 bg-indigo-500 rounded-full" />
+                    :class="modelValue === opt.value ? 'border-indigo-500' : 'border-gray-400'">
+                    <div v-if="modelValue === opt.value" class="w-3 h-3 bg-indigo-500 rounded-full" />
                 </div>
                 <span class="text-sm text-gray-700">{{ opt.label }}</span>
             </label>

@@ -11,13 +11,12 @@ const props = defineProps({
 });
 const emit = defineEmits(["update:modelValue"]);
 
-const isChecked = computed({
-    get: () => props.modelValue,
-    set: (val) => {
-        if (props.disabled || props.readonly) return;
-        emit("update:modelValue", val);
-    }
-});
+const isChecked = computed(() => props.modelValue);
+
+function handleChange(event) {
+    if (props.disabled || props.readonly) return;
+    emit("update:modelValue", event.target.checked);
+}
 
 function handleClick(e) {
     if (props.readonly) {
@@ -37,7 +36,8 @@ function handleClick(e) {
                         : 'border-gray-400 hover:border-gray-600'">
                 <input type="checkbox" :id="name" :name="name"
                     class="appearance-none absolute w-full h-full cursor-pointer rounded-md outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500"
-                    v-model="isChecked"
+                    :checked="isChecked"
+                    @change="handleChange"
                     @click="handleClick"
                     :disabled="disabled" :readonly="readonly" />
                 <svg v-if="isChecked" xmlns="http://www.w3.org/2000/svg"
