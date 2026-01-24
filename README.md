@@ -1,4 +1,4 @@
-# vue-template-kit
+# vue-kit-ui
 
 A reusable **Vue 3 + Tailwind CSS UI component library** designed to speed up development of modern dashboards and MVPs.
 
@@ -19,7 +19,7 @@ This project is built from **real-world production components** that have been r
 
 ## 🎯 Project Goals
 
-The main goal of **vue-template-kit** is to:
+The main goal of **vue-kit-ui** is to:
 
 * Reduce repetitive UI work
 * Provide consistent design patterns
@@ -33,7 +33,7 @@ This is **not** a full design system and **not** tied to any specific business d
 ## 📦 Installation
 
 ```bash
-npm install vue-template-kit
+npm install vue-kit-ui
 ```
 
 > Tailwind CSS must already be configured in your project.
@@ -45,7 +45,7 @@ npm install vue-template-kit
 Import components directly from the library:
 
 ```js
-import { Button } from 'vue-template-kit'
+import { Button } from 'vue-kit-ui'
 ```
 
 Example usage:
@@ -113,7 +113,7 @@ The playground is **not part of the library output**.
 ## 📁 Project Structure
 
 ```text
-vue-template-kit/
+vue-kit-ui/
 ├─ packages/
 │  └─ ui/           # Component library
 ├─ playground/      # Development playground
