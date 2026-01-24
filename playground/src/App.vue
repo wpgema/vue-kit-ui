@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle } from "../../packages/ui/src/components/input";
-import { ButtonAction, ButtonLink } from "../../packages/ui/src/components/button";
+import { Button } from "../../packages/ui/src/components/button";
 
 const username = ref("");
 const password = ref("");
@@ -45,36 +45,36 @@ const startLoading = () => {
             <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <div>
                     <div class="flex gap-2 flex-wrap items-center mb-4">
-                        <ButtonAction>Primary</ButtonAction>
-                        <ButtonAction variant="secondary">Secondary</ButtonAction>
-                        <ButtonAction variant="danger">Danger</ButtonAction>
-                        <ButtonAction variant="outline">Outline</ButtonAction>
-                        <ButtonAction variant="yellow">Yellow</ButtonAction>
+                        <Button>Primary</Button>
+                        <Button variant="secondary">Secondary</Button>
+                        <Button variant="danger">Danger</Button>
+                        <Button variant="outline">Outline</Button>
+                        <Button variant="yellow">Yellow</Button>
                     </div>
                     <div class="flex gap-2 flex-wrap items-center mb-4">
-                        <ButtonAction size="sm">Small</ButtonAction>
-                        <ButtonAction size="md">Medium</ButtonAction>
-                        <ButtonAction size="lg">Large</ButtonAction>
+                        <Button size="sm">Small</Button>
+                        <Button size="md">Medium</Button>
+                        <Button size="lg">Large</Button>
                     </div>
                     <div class="flex gap-2 flex-wrap items-center">
-                        <ButtonAction :loading="isLoading" @click="startLoading">Click to Load</ButtonAction>
-                        <ButtonAction disabled>Disabled</ButtonAction>
+                        <Button :loading="isLoading" @click="startLoading">Click to Load</Button>
+                        <Button disabled>Disabled</Button>
                     </div>
                 </div>
                 <!-- Code Usage -->
                 <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto">
                     <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                     <div class="p-3 rounded text-sm font-mono text-slate-700">
-                        <p class="mb-2">import { ButtonAction } from "../../packages/ui/src/components/button";</p>
-                        <p class="mb-1">&lt;ButtonAction variant="primary"&gt;Primary&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction variant="secondary"&gt;Secondary&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction variant="outline"&gt;Outline&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction variant="yellow"&gt;Yellow&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction size="sm"&gt;Small&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction size="md"&gt;Medium&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction size="lg"&gt;Large&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction :loading="isLoading" @click="startLoading"&gt;Loading&lt;/ButtonAction&gt;</p>
-                        <p class="mb-1">&lt;ButtonAction disabled&gt;Disabled&lt;/ButtonAction&gt;</p>
+                        <p class="mb-2">import { Button } from "../../packages/ui/src/components/button";</p>
+                        <p class="mb-1">&lt;Button variant="primary"&gt;Primary&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button variant="secondary"&gt;Secondary&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button variant="outline"&gt;Outline&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button variant="yellow"&gt;Yellow&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button size="sm"&gt;Small&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button size="md"&gt;Medium&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button size="lg"&gt;Large&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button :loading="isLoading" @click="startLoading"&gt;Loading&lt;/Button&gt;</p>
+                        <p class="mb-1">&lt;Button disabled&gt;Disabled&lt;/Button&gt;</p>
                     </div>
                 </div>
             </div>
@@ -302,42 +302,6 @@ const startLoading = () => {
                 </div>
             </div>
             
-            <h2 class="text-xl font-medium">Button Link Examples</h2>
-            <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-                <div>
-                    <div class="flex gap-2 flex-wrap items-center mb-4">
-                        <ButtonLink to="/">Primary</ButtonLink>
-                        <ButtonLink to="/about" variant="secondary">Secondary</ButtonLink>
-                        <ButtonLink to="/contact" variant="danger">Danger</ButtonLink>
-                        <ButtonLink to="/" variant="outline">Outline</ButtonLink>
-                        <ButtonLink to="/" variant="yellow">Yellow</ButtonLink>
-                    </div>
-                    <div class="flex gap-2 flex-wrap items-center mb-4">
-                        <ButtonLink to="/" size="sm">Small</ButtonLink>
-                        <ButtonLink to="/" size="md">Medium</ButtonLink>
-                        <ButtonLink to="/" size="lg">Large</ButtonLink>
-                    </div>
-                    <div class="flex gap-2 flex-wrap items-center">
-                        <ButtonLink to="/" disabled>Disabled</ButtonLink>
-                    </div>
-                </div>
-                <!-- Code Usage -->
-                <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto">
-                    <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
-                    <div class="p-3 rounded text-sm font-mono text-slate-700">
-                        <p class="mb-2">import { ButtonLink } from "../../packages/ui/src/components/button";</p>
-                        <p class="mb-1">&lt;ButtonLink to="/" variant="primary"&gt;Primary&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/about" variant="secondary"&gt;Secondary&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/contact" variant="danger"&gt;Danger&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/" variant="outline"&gt;Outline&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/" variant="yellow"&gt;Yellow&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/" size="sm"&gt;Small&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/" size="md"&gt;Medium&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/" size="lg"&gt;Large&lt;/ButtonLink&gt;</p>
-                        <p class="mb-1">&lt;ButtonLink to="/" disabled&gt;Disabled&lt;/ButtonLink&gt;</p>
-                    </div>
-                </div>
-            </div>
         </main>
 
         <!-- Footer -->

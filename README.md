@@ -72,7 +72,7 @@ Import components directly from the library in your Vue files:
 <script setup>
 import { ref } from 'vue'
 import { 
-  ButtonAction, 
+  Button, 
   InputText, 
   TextArea, 
   InputSelect, 
@@ -89,9 +89,9 @@ const notifications = ref(false)
 <template>
   <div class="p-4 space-y-4">
     <!-- Button Usage -->
-    <ButtonAction variant="primary" :loading="isLoading">
+    <Button variant="primary" :loading="isLoading">
       Submit
-    </ButtonAction>
+    </Button>
 
     <!-- InputText Usage -->
     <InputText
@@ -128,7 +128,7 @@ const notifications = ref(false)
 
 ## 🧩 Components
 
-### ButtonAction
+### Button
 
 A versatile button component with support for variants and loading states.
 
@@ -139,17 +139,6 @@ A versatile button component with support for variants and loading states.
 | loading  | Boolean | false   | Shows a loading spinner and disables interaction |
 | disabled | Boolean | false   | Disables the button |
 | type     | String  | button  | Button type (`button`, `submit`, `reset`) |
-
-### ButtonLink
-
-A button component that acts as a router link.
-
-| Prop     | Type             | Default | Description          |
-| -------- | ---------------- | ------- | -------------------- |
-| to       | String / Object  | -       | **Required**. Target route |
-| variant  | String           | primary | Button style variant (`primary`, `secondary`, `danger`, `outline`, `yellow`) |
-| size     | String           | md      | Button size (`sm`, `md`, `lg`) |
-| disabled | Boolean          | false   | Disables the button link styling |
 
 ### InputText
 
@@ -309,7 +298,7 @@ MIT License
 
 ## 👤 Author
 
-**Gema Maulana**
+**M. Gema Maulana**
 Web Developer
 
 ---
