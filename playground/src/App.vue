@@ -27,9 +27,10 @@ const startLoading = () => {
         <!-- Header -->
         <header class="bg-indigo-600 shadow-sm sticky top-0 z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-16 items-center text-white">
-                    <div class="flex-shrink-0 flex items-center">
-                        <span class="text-xl font-bold">Vue Kit UI</span>
+                <div class="flex justify-between h-20 items-center text-white">
+                    <div class="flex flex-col">
+                        <h1 class="text-2xl font-bold">Vue Kit UI</h1>
+                        <h2 class="text-sm font-semibold">Developer Page</h2>
                     </div>
                     <p>Current Version: 1.0.0</p>
                 </div>

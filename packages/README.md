@@ -71,25 +71,46 @@ Import components directly from the library in your Vue files:
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { Button, InputText, TextArea } from 'vue-kit-ui'
+import { 
+  ButtonAction, 
+  InputText, 
+  TextArea, 
+  InputSelect, 
+  Toggle 
+} from 'vue-kit-ui'
 
 const username = ref('')
 const description = ref('')
 const isLoading = ref(false)
+const role = ref('')
+const notifications = ref(false)
 </script>
 
 <template>
   <div class="p-4 space-y-4">
     <!-- Button Usage -->
-    <Button variant="primary" :loading="isLoading">
+    <ButtonAction variant="primary" :loading="isLoading">
       Submit
-    </Button>
+    </ButtonAction>
 
     <!-- InputText Usage -->
     <InputText
       label="Username"
       v-model:value="username"
       placeholder="Enter your username"
+    />
+
+    <!-- InputSelect Usage -->
+    <InputSelect 
+        label="Role"
+        v-model:value="role"
+        :options="[{label: 'Admin', value: 'admin'}, {label: 'User', value: 'user'}]"
+    />
+    
+    <!-- Toggle Usage -->
+    <Toggle 
+        label="Notifications"
+        v-model:value="notifications"
     />
 
     <!-- TextArea Usage -->
@@ -107,20 +128,32 @@ const isLoading = ref(false)
 
 ## 🧩 Components
 
-### Button
+### ButtonAction
 
 A versatile button component with support for variants and loading states.
 
 | Prop     | Type    | Default | Description          |
 | -------- | ------- | ------- | -------------------- |
-| variant  | String  | primary | Button style variant (`primary`, `secondary`, `danger`, etc.) |
+| variant  | String  | primary | Button style variant (`primary`, `secondary`, `danger`, `outline`, `yellow`) |
 | size     | String  | md      | Button size (`sm`, `md`, `lg`) |
 | loading  | Boolean | false   | Shows a loading spinner and disables interaction |
 | disabled | Boolean | false   | Disables the button |
+| type     | String  | button  | Button type (`button`, `submit`, `reset`) |
+
+### ButtonLink
+
+A button component that acts as a router link.
+
+| Prop     | Type             | Default | Description          |
+| -------- | ---------------- | ------- | -------------------- |
+| to       | String / Object  | -       | **Required**. Target route |
+| variant  | String           | primary | Button style variant (`primary`, `secondary`, `danger`, `outline`, `yellow`) |
+| size     | String           | md      | Button size (`sm`, `md`, `lg`) |
+| disabled | Boolean          | false   | Disables the button link styling |
 
 ### InputText
 
-A standard text input field with label and error support.
+A standard text input field.
 
 | Prop         | Type             | Default | Description          |
 | ------------ | ---------------- | ------- | -------------------- |
@@ -131,6 +164,7 @@ A standard text input field with label and error support.
 | error        | String, Boolean  | false   | Error message or error state |
 | required     | Boolean          | false   | Marks text with an asterisk |
 | disabled     | Boolean          | false   | Disables the input |
+| readonly     | Boolean          | false   | Readonly state |
 
 ### TextArea
 
@@ -139,11 +173,76 @@ A multi-line text area component.
 | Prop         | Type             | Default | Description          |
 | ------------ | ---------------- | ------- | -------------------- |
 | label        | String           | -       | Label text displayed above the textarea |
-| modelValue   | String           | -       | **(v-model)** The textarea value |
+| modelValue   | String           | ""      | **(v-model)** The textarea value |
 | rows         | Number           | 4       | Number of visible text lines |
 | placeholder  | String           | -       | Placeholder text |
 | error        | String, Boolean  | -       | Error message |
 | required     | Boolean          | false   | Marks label with an asterisk |
+
+### InputSelect
+
+A dropdown select component.
+
+| Prop        | Type             | Default | Description          |
+| ----------- | ---------------- | ------- | -------------------- |
+| label       | String           | -       | Label text displayed above the select |
+| value       | String, Number   | -       | **(v-model:value)** The selected value |
+| options     | Array            | []      | Array of objects `{ label, value }` |
+| placeholder | String           | "Pilih opsi..." | Placeholder text |
+| filter      | Boolean          | false   | Enable filtering |
+| error       | String           | -       | Error message |
+| required    | Boolean          | false   | Marks label with an asterisk |
+
+### FileUpload
+
+A file upload component with drag and drop support.
+
+| Prop        | Type             | Default | Description          |
+| ----------- | ---------------- | ------- | -------------------- |
+| label       | String           | -       | Label text |
+| modelValue  | Array            | []      | **(v-model)** Array of file objects |
+| accept      | String           | "*"     | File types to accept |
+| multiple    | Boolean          | false   | Allow multiple file selection |
+| required    | Boolean          | false   | Marks label with an asterisk |
+
+### RadioInput
+
+A radio button group component.
+
+| Prop       | Type     | Default | Description          |
+| ---------- | -------- | ------- | -------------------- |
+| label      | String   | -       | Group label |
+| name       | String   | -       | **Required**. Input name attribute |
+| value      | String   | ""      | **(v-model:value)** Selected value |
+| options    | Array    | []      | **Required**. Array of objects `{ label, value }` |
+| horizontal | Boolean  | false   | Display options horizontally |
+| error      | String   | -       | Error message |
+| required   | Boolean  | false   | Marks label with an asterisk |
+
+### Checkbox
+
+A checkbox component.
+
+| Prop     | Type             | Default | Description          |
+| -------- | ---------------- | ------- | -------------------- |
+| label    | String           | -       | Checkbox label |
+| checked  | Boolean          | false   | **(v-model:checked)** Checked state |
+| error    | String, Boolean  | false   | Error state |
+| disabled | Boolean          | false   | Disables the checkbox |
+| required | Boolean          | false   | Marks label with an asterisk |
+
+### Toggle
+
+A toggle switch component.
+
+| Prop             | Type             | Default | Description |
+| ---------------- | ---------------- | ------- | ----------- |
+| label            | String           | -       | Label text |
+| value            | Boolean          | false   | **(v-model:value)** Toggle state |
+| descriptionTrue  | String           | -       | Text when true (e.g. "On") |
+| descriptionFalse | String           | -       | Text when false (e.g. "Off") |
+| horizontal       | Boolean          | false   | Horizontal layout |
+| error            | String, Boolean  | -       | Error message |
 
 ---
 
