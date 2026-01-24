@@ -36,57 +36,114 @@ This is **not** a full design system and **not** tied to any specific business d
 npm install vue-kit-ui
 ```
 
-> Tailwind CSS must already be configured in your project.
+> **Note:** Tailwind CSS must already be configured in your project.
+
+---
+
+## ⚙️ Setup
+
+Since this library is built with Tailwind CSS, you need to ensure your project's Tailwind configuration scans the library's files to generate the correct styles.
+
+Update your `tailwind.config.js` (or `tailwind.config.ts`) to include the `vue-kit-ui` path in the `content` array:
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}", 
+    // Add this line to scan vue-kit-ui components:
+    "./node_modules/vue-kit-ui/**/*.{vue,js,ts,jsx,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
 
 ---
 
 ## 🚀 Usage
 
-Import components directly from the library:
-
-```js
-import { Button } from 'vue-kit-ui'
-```
-
-Example usage:
+Import components directly from the library in your Vue files:
 
 ```vue
-<Button variant="primary" size="md">
-  Click me
-</Button>
+<script setup>
+import { ref } from 'vue'
+import { Button, InputText, TextArea } from 'vue-kit-ui'
+
+const username = ref('')
+const description = ref('')
+const isLoading = ref(false)
+</script>
+
+<template>
+  <div class="p-4 space-y-4">
+    <!-- Button Usage -->
+    <Button variant="primary" :loading="isLoading">
+      Submit
+    </Button>
+
+    <!-- InputText Usage -->
+    <InputText
+      label="Username"
+      v-model:value="username"
+      placeholder="Enter your username"
+    />
+
+    <!-- TextArea Usage -->
+    <TextArea
+      label="Bio"
+      v-model="description"
+      rows="4"
+      placeholder="Tell us about yourself"
+    />
+  </div>
+</template>
 ```
 
 ---
 
-## 🧩 Available Components (v1)
+## 🧩 Components
 
-* Button
-* Modal *(coming next)*
-* Card *(planned)*
-* Input *(planned)*
+### Button
 
-> The library is intentionally kept small and focused.
-
----
-
-## 🔘 Button Component
-
-### Props
+A versatile button component with support for variants and loading states.
 
 | Prop     | Type    | Default | Description          |
 | -------- | ------- | ------- | -------------------- |
-| variant  | String  | primary | Button style variant |
-| size     | String  | md      | Button size          |
-| loading  | Boolean | false   | Show loading state   |
-| disabled | Boolean | false   | Disable the button   |
+| variant  | String  | primary | Button style variant (`primary`, `secondary`, `danger`, etc.) |
+| size     | String  | md      | Button size (`sm`, `md`, `lg`) |
+| loading  | Boolean | false   | Shows a loading spinner and disables interaction |
+| disabled | Boolean | false   | Disables the button |
 
-### Example
+### InputText
 
-```vue
-<Button variant="danger" size="lg" :loading="isSaving">
-  Delete
-</Button>
-```
+A standard text input field with label and error support.
+
+| Prop         | Type             | Default | Description          |
+| ------------ | ---------------- | ------- | -------------------- |
+| label        | String           | -       | Label text displayed above the input |
+| value        | String, Number   | -       | **(v-model:value)** The input value |
+| placeholder  | String           | "Masukkan teks..." | Placeholder text |
+| type         | String           | "text"  | HTML input type (text, password, etc.) |
+| error        | String, Boolean  | false   | Error message or error state |
+| required     | Boolean          | false   | Marks text with an asterisk |
+| disabled     | Boolean          | false   | Disables the input |
+
+### TextArea
+
+A multi-line text area component.
+
+| Prop         | Type             | Default | Description          |
+| ------------ | ---------------- | ------- | -------------------- |
+| label        | String           | -       | Label text displayed above the textarea |
+| modelValue   | String           | ""      | **(v-model)** The textarea value |
+| rows         | Number           | 4       | Number of visible text lines |
+| placeholder  | String           | -       | Placeholder text |
+| error        | String, Boolean  | -       | Error message |
+| required     | Boolean          | false   | Marks label with an asterisk |
 
 ---
 
