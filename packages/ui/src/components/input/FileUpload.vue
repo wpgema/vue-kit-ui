@@ -6,7 +6,9 @@ const props = defineProps({
     accept: { type: String, default: "*" },
     multiple: { type: Boolean, default: false },
     name: String,
-    required: Boolean
+    required: Boolean,
+    placeholder: { type: String, default: "Click or drag files here" },
+    multipleText: { type: String, default: "(multiple allowed)" }
 });
 const emit = defineEmits(["update:modelValue"]);
 const inputRef = ref(null);
@@ -36,12 +38,12 @@ function removeFile(index) {
         </label>
         <input type="hidden" :name="name" :value="internalFiles.map(f => f.name).join(',')" />
         <div class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-6 cursor-pointer hover:border-indigo-400 hover:bg-indigo-50 transition"
-            @click="handleClick">
+            @click="handleClick" @keydown.enter="handleClick" @keydown.space="handleClick" tabindex="0" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
             <p class="text-gray-500 text-sm">
-                Klik atau drag file ke sini <span v-if="multiple">(bisa lebih dari 1)</span>
+                {{ placeholder }} <span v-if="multiple">{{ multipleText }}</span>
             </p>
         </div>
         <input type="file" ref="inputRef" class="hidden" :accept="accept" :multiple="multiple" @change="handleChange" />
@@ -49,8 +51,8 @@ function removeFile(index) {
             <li v-for="(file, idx) in internalFiles" :key="idx"
                 class="flex justify-between items-center text-sm border p-2 rounded border-gray-300">
                 <span class="truncate max-w-xs">{{ file.name }}</span>
-                <button type="button" class="text-red-500 hover:text-red-700 text-xs cursor-pointer"
-                    @click="removeFile(idx)">
+                <button type="button" class="text-red-500 hover:text-red-700 text-xs cursor-pointer p-1"
+                    @click="removeFile(idx)" aria-label="Remove file">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"

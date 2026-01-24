@@ -30,7 +30,16 @@ This is **not** a full design system and **not** tied to any specific business d
 
 ---
 
-## 📦 Installation
+## � Requirements
+
+* Vue 3
+* Tailwind CSS
+
+> ⚠️ **Tailwind CSS is not bundled with this library.** You are responsible for configuring Tailwind in your application.
+
+---
+
+## �📦 Installation
 
 ```bash
 npm install vue-kit-ui
@@ -96,21 +105,21 @@ const notifications = ref(false)
     <!-- InputText Usage -->
     <InputText
       label="Username"
-      v-model:value="username"
+      v-model="username"
       placeholder="Enter your username"
     />
 
     <!-- InputSelect Usage -->
     <InputSelect 
         label="Role"
-        v-model:value="role"
+        v-model="role"
         :options="[{label: 'Admin', value: 'admin'}, {label: 'User', value: 'user'}]"
     />
     
     <!-- Toggle Usage -->
     <Toggle 
         label="Notifications"
-        v-model:value="notifications"
+        v-model="notifications"
     />
 
     <!-- TextArea Usage -->
@@ -147,8 +156,8 @@ A standard text input field.
 | Prop         | Type             | Default | Description          |
 | ------------ | ---------------- | ------- | -------------------- |
 | label        | String           | -       | Label text displayed above the input |
-| value        | String, Number   | -       | **(v-model:value)** The input value |
-| placeholder  | String           | "Masukkan teks..." | Placeholder text |
+| modelValue   | String, Number   | -       | **(v-model)** The input value |
+| placeholder  | String           | "Type something..." | Placeholder text |
 | type         | String           | "text"  | HTML input type (text, password, etc.) |
 | error        | String, Boolean  | false   | Error message or error state |
 | required     | Boolean          | false   | Marks text with an asterisk |
@@ -175,9 +184,9 @@ A dropdown select component.
 | Prop        | Type             | Default | Description          |
 | ----------- | ---------------- | ------- | -------------------- |
 | label       | String           | -       | Label text displayed above the select |
-| value       | String, Number   | -       | **(v-model:value)** The selected value |
+| modelValue  | String, Number   | -       | **(v-model)** The selected value |
 | options     | Array            | []      | Array of objects `{ label, value }` |
-| placeholder | String           | "Pilih opsi..." | Placeholder text |
+| placeholder | String           | "Select option..." | Placeholder text |
 | filter      | Boolean          | false   | Enable filtering |
 | error       | String           | -       | Error message |
 | required    | Boolean          | false   | Marks label with an asterisk |
@@ -193,6 +202,7 @@ A file upload component with drag and drop support.
 | accept      | String           | "*"     | File types to accept |
 | multiple    | Boolean          | false   | Allow multiple file selection |
 | required    | Boolean          | false   | Marks label with an asterisk |
+| placeholder | String           | "Click or drag files here" | Placeholder text |
 
 ### RadioInput
 
@@ -202,7 +212,7 @@ A radio button group component.
 | ---------- | -------- | ------- | -------------------- |
 | label      | String   | -       | Group label |
 | name       | String   | -       | **Required**. Input name attribute |
-| value      | String   | ""      | **(v-model:value)** Selected value |
+| modelValue | String   | ""      | **(v-model)** Selected value |
 | options    | Array    | []      | **Required**. Array of objects `{ label, value }` |
 | horizontal | Boolean  | false   | Display options horizontally |
 | error      | String   | -       | Error message |
@@ -212,13 +222,13 @@ A radio button group component.
 
 A checkbox component.
 
-| Prop     | Type             | Default | Description          |
-| -------- | ---------------- | ------- | -------------------- |
-| label    | String           | -       | Checkbox label |
-| checked  | Boolean          | false   | **(v-model:checked)** Checked state |
-| error    | String, Boolean  | false   | Error state |
-| disabled | Boolean          | false   | Disables the checkbox |
-| required | Boolean          | false   | Marks label with an asterisk |
+| Prop       | Type             | Default | Description          |
+| ---------- | ---------------- | ------- | -------------------- |
+| label      | String           | -       | Checkbox label |
+| modelValue | Boolean          | false   | **(v-model)** Checked state |
+| error      | String, Boolean  | false   | Error state |
+| disabled   | Boolean          | false   | Disables the checkbox |
+| required   | Boolean          | false   | Marks label with an asterisk |
 
 ### Toggle
 
@@ -227,7 +237,7 @@ A toggle switch component.
 | Prop             | Type             | Default | Description |
 | ---------------- | ---------------- | ------- | ----------- |
 | label            | String           | -       | Label text |
-| value            | Boolean          | false   | **(v-model:value)** Toggle state |
+| modelValue       | Boolean          | false   | **(v-model)** Toggle state |
 | descriptionTrue  | String           | -       | Text when true (e.g. "On") |
 | descriptionFalse | String           | -       | Text when false (e.g. "Off") |
 | horizontal       | Boolean          | false   | Horizontal layout |

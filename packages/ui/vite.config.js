@@ -6,10 +6,13 @@ export default defineConfig({
     plugins: [vue()],
     build: {
         lib: {
-        entry: path.resolve(__dirname, 'src/index.js'),
-        name: 'VueKitUI',
-        fileName: (format) => `index.${format}.js`
+            entry: path.resolve(__dirname, 'src/index.js'),
+            name: 'VueKitUI',
+            formats: ["es", "cjs"],
+            fileName: (format) =>
+                format === "es" ? "index.es.js" : "index.cjs.js",
         },
+        sourcemap: true,
         rollupOptions: {
         external: ['vue'],
         output: {

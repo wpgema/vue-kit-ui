@@ -1,7 +1,7 @@
 <script setup>
-import { ref, watch } from "vue";
+import { computed } from "vue";
 const props = defineProps({
-    value: { type: Boolean, default: false },
+    modelValue: { type: Boolean, default: false },
     label: String,
     descriptionTrue: String,
     descriptionFalse: String,
@@ -10,15 +10,12 @@ const props = defineProps({
     horizontal: Boolean,
     name: String
 });
-const emit = defineEmits(["update:value"]);
-const internalValue = ref(props.value);
-watch(() => props.value, (val) => {
-    internalValue.value = val;
+const emit = defineEmits(["update:modelValue"]);
+
+const internalValue = computed({
+    get: () => props.modelValue,
+    set: (val) => emit("update:modelValue", val)
 });
-function toggle() {
-    internalValue.value = !internalValue.value;
-    emit("update:value", internalValue.value);
-}
 </script>
 <template>
     <div :class="horizontal ? 'flex items-center gap-2 mb-4' : 'flex flex-col mb-4'">
@@ -31,7 +28,7 @@ function toggle() {
             <label
                 :class="horizontal ? 'relative inline-flex items-center cursor-pointer my-0' : 'relative inline-flex items-center cursor-pointer my-1'">
                 <input :name="name" type="checkbox" role="switch" :aria-checked="internalValue" :aria-invalid="!!error"
-                    class="sr-only peer" :checked="internalValue" @change="toggle" />
+                    class="sr-only peer" v-model="internalValue" />
                 <div :class="[
                     'w-11 h-6 rounded-full transition peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-500',
                     internalValue ? 'bg-indigo-600' : 'bg-gray-300'
@@ -40,7 +37,7 @@ function toggle() {
                     'absolute left-0.5 top-0.5 w-5 h-5 rounded-full bg-white shadow transition',
                     internalValue ? 'translate-x-5' : 'translate-x-0'
                 ]" />
-                <span class="ml-3 text-sm text-gray-700">
+                <span class="ml-3 text-sm text-gray-700" v-if="descriptionTrue || descriptionFalse">
                     {{ internalValue ? descriptionTrue : descriptionFalse }}
                 </span>
             </label>

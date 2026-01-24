@@ -1,40 +1,30 @@
 <script setup>
-import { ref, watch, onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount, computed } from "vue";
 
 const props = defineProps({
     label: String,
     name: String,
-    value: [String, Number],
+    modelValue: [String, Number],
     valueLabel: String,
-    placeholder: { type: String, default: "Pilih opsi..." },
+    placeholder: { type: String, default: "Select option..." },
     options: { type: Array, required: true },
     required: Boolean,
     error: String,
     filter: Boolean
 });
-const emit = defineEmits(["update:value"]);
+const emit = defineEmits(["update:modelValue"]);
 const open = ref(false);
-const internalValue = ref(props.value);
-const selectedLabel = ref(props.valueLabel || "");
+
+const selectedLabel = computed(() => {
+    if (props.valueLabel) return props.valueLabel;
+    const found = props.options.find((o) => o.value === props.modelValue);
+    return found ? found.label : "";
+});
+
 const container = ref(null);
-watch(
-    () => props.value,
-    (val) => {
-        internalValue.value = val;
-        selectedLabel.value =
-            props.options.find((o) => o.value === val)?.label || "";
-    }
-);
-watch(
-    () => props.valueLabel,
-    (val) => {
-        if (val) selectedLabel.value = val;
-    }
-);
+
 function handleSelect(val) {
-    internalValue.value = val;
-    selectedLabel.value = props.options.find((o) => o.value === val)?.label || "";
-    emit("update:value", val);
+    emit("update:modelValue", val);
     open.value = false;
 }
 function onClickOutside(e) {
@@ -42,6 +32,19 @@ function onClickOutside(e) {
         open.value = false;
     }
 }
+function toggle() {
+    open.value = !open.value;
+}
+function onKeydown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+    }
+    if (e.key === "Escape") {
+        open.value = false;
+    }
+}
+
 onMounted(() => {
     document.addEventListener("mousedown", onClickOutside);
 });
@@ -59,13 +62,16 @@ onBeforeUnmount(() => {
             {{ label }}
             <span v-if="required" class="text-red-500">*</span>
         </label>
-        <input type="hidden" :name="name" :value="internalValue || ''" />
+        <input type="hidden" :name="name" :value="modelValue || ''" />
         <div
-            role="button"
+            role="combobox"
+            :aria-expanded="open"
+            aria-haspopup="listbox"
             tabindex="0"
-            @mousedown.prevent="open = !open"
+            @mousedown.prevent="toggle"
+            @keydown="onKeydown"
             class="relative flex w-full items-center justify-between rounded-lg border px-3 py-2 bg-white cursor-pointer
-                transition-all
+                transition-all outline-none focus:ring-2 focus:ring-indigo-500
                 "
             :class="{
                 'border-red-300 ring-1 ring-red-200': error,
@@ -113,15 +119,18 @@ onBeforeUnmount(() => {
         </div>
         <div
             v-if="open"
+            role="listbox"
             class="absolute mt-1 w-full rounded-lg border border-gray-200 bg-white shadow-lg z-10 max-h-60 overflow-auto"
         >
             <div
                 v-for="opt in options"
                 :key="opt.value"
+                role="option"
+                :aria-selected="modelValue === opt.value"
                 class="px-3 py-2 text-sm cursor-pointer hover:bg-gray-100"
                 :class="{
-                    'bg-indigo-50 text-indigo-600': internalValue === opt.value,
-                    'text-gray-700': internalValue !== opt.value
+                    'bg-indigo-50 text-indigo-600': modelValue === opt.value,
+                    'text-gray-700': modelValue !== opt.value
                 }"
                 @mousedown.prevent.stop="handleSelect(opt.value)"
             >

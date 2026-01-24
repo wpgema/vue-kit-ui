@@ -7,11 +7,18 @@
     "module": "dist/index.es.js",
     "exports": {
         ".": {
-        "import": "./dist/index.es.js",
-        "require": "./dist/index.cjs.js"
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.cjs.js"
         }
     },
-    "files": ["dist"],
+    "types": "dist/index.d.ts",
+    "sideEffects": false,
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
     "scripts": {
         "build": "vite build"
     },
@@ -22,10 +29,19 @@
         "ui-kit",
         "tailwind"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wpgema/vue-kit-ui.git"
+    },
+    "bugs": {
+        "url": "https://github.com/wpgema/vue-kit-ui/issues"
+    },
+    "homepage": "https://github.com/wpgema/vue-kit-ui#readme",
     "author": "M. Gema Maulana",
     "license": "MIT",
     "peerDependencies": {
-        "vue": "^3.3.0"
+        "vue": "^3.3.0",
+        "tailwindcss": "^3.0.0 || ^4.0.0"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^6.0.3",

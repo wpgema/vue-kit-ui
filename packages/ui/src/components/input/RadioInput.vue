@@ -4,17 +4,18 @@ const props = defineProps({
     name: { type: String, required: true },
     label: { type: String, default: null },
     options: { type: Array, required: true },
-    value: { type: String, default: "" },
-    onChange: { type: Function, default: null },
+    modelValue: { type: [String, Number, Boolean], default: "" },
     required: { type: Boolean, default: false },
     error: { type: String, default: null },
     horizontal: { type: Boolean, default: false },
 });
-const emit = defineEmits(["update:value"]);
-function selectValue(val) {
-    emit("update:value", val);
-    if (props.onChange) props.onChange(val);
-}
+const emit = defineEmits(["update:modelValue"]);
+
+const selectedValue = computed({
+    get: () => props.modelValue,
+    set: (val) => emit("update:modelValue", val)
+});
+
 const containerClass = computed(() =>
     props.horizontal
         ? "w-full flex items-center space-x-4 mb-3"
@@ -30,14 +31,14 @@ const optionsClass = computed(() =>
             {{ label }}
             <span v-if="required" class="text-red-500">*</span>
         </label>
-        <div :class="optionsClass">
+        <div :class="optionsClass" role="radiogroup">
             <label v-for="opt in options" :key="opt.value"
-                class="flex items-center space-x-2 p-2 rounded-xl cursor-pointer transition-all duration-200"
-                @click="selectValue(opt.value)">
-                <input type="radio" class="hidden" :name="name" :value="opt.value" :checked="value === opt.value" />
-                <div class="w-5 h-5 rounded-full border flex items-center justify-center"
-                    :class="value === opt.value ? 'border-blue-500' : 'border-gray-400'">
-                    <div v-if="value === opt.value" class="w-3 h-3 bg-blue-500 rounded-full" />
+                class="flex items-center space-x-2 p-2 rounded-xl cursor-pointer transition-all duration-200 outline-none focus-within:ring-2 focus-within:ring-indigo-500"
+                :class="{ 'bg-indigo-50': selectedValue === opt.value }">
+                <input type="radio" class="sr-only" :name="name" :value="opt.value" v-model="selectedValue" />
+                <div class="w-5 h-5 rounded-full border flex items-center justify-center bg-white"
+                    :class="selectedValue === opt.value ? 'border-indigo-500' : 'border-gray-400'">
+                    <div v-if="selectedValue === opt.value" class="w-3 h-3 bg-indigo-500 rounded-full" />
                 </div>
                 <span class="text-sm text-gray-700">{{ opt.label }}</span>
             </label>

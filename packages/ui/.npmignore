@@ -1,23 +1,23 @@
-# Editor & System
-.idea
-.vscode
-.DS_Store
-Thumbs.db
-*.log
+# source
+src/
+playground/
+packages/
 
-# Dependencies
-node_modules/
-
-# Config Files
-.gitignore
-.eslintrc*
-.prettierrc*
+# config & tooling
 vite.config.js
 tailwind.config.js
 postcss.config.js
 
-# Project specific
-docs/
-playground/
-tests/
+# dev junk
+node_modules/
+.env
+.DS_Store
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# tests
+__tests__/
 coverage/

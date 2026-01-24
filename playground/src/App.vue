@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
-import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle } from "../../packages/ui/src/components/input";
-import { Button } from "../../packages/ui/src/components/button";
+import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle } from "vue-kit-ui";
+import { Button } from "vue-kit-ui";
 
 const username = ref("");
 const password = ref("");
@@ -12,6 +12,8 @@ const gender = ref("");
 const toggleNotifications = ref(false);
 const toggleHorizontal = ref(false);
 const isLoading = ref(false);
+const agree = ref(false);
+const errorMsg = "You must agree to the terms";
 
 const startLoading = () => {
     isLoading.value = true;
@@ -87,7 +89,7 @@ const startLoading = () => {
                             label="Username"
                             name="username"
                             placeholder="Enter Username"
-                            v-model:value="username"
+                            v-model="username"
                             :error="false"
                             required
                         />
@@ -96,7 +98,7 @@ const startLoading = () => {
                             name="password"
                             placeholder="Enter Password"
                             type="password"
-                            v-model:value="password"
+                            v-model="password"
                             :error="false"
                         />
                     </div>
@@ -109,7 +111,7 @@ const startLoading = () => {
                                     label="Username"
                                     name="username"
                                     placeholder="Enter Username"
-                                    v-model:value="username"
+                                    v-model="username"
                                     :error="false"
                                     required
                                 /&gt;
@@ -120,7 +122,7 @@ const startLoading = () => {
                                     name="password"
                                     placeholder="Enter Password"
                                     type="password"
-                                    v-model:value="password"
+                                    v-model="password"
                                     :error="false"
                                 /&gt;
                             </p>
@@ -160,7 +162,7 @@ const startLoading = () => {
                         <InputSelect
                             label="Filter Status"
                             filter
-                            v-model:value="status"
+                            v-model="status"
                             :options="[
                                 { value: 'active', label: 'Active' },
                                 { value: 'inactive', label: 'Inactive' },
@@ -175,7 +177,7 @@ const startLoading = () => {
                                 &lt;InputSelect 
                                     label="Filter Status"
                                     filter
-                                    v-model:value="status"
+                                    v-model="status"
                                     :options="[
                                         { value: 'active', label: 'Active' },
                                         { value: 'inactive', label: 'Inactive' },
@@ -224,13 +226,13 @@ const startLoading = () => {
                                 { value: 'male', label: 'Male' },
                                 { value: 'female', label: 'Female' }
                             ]"
-                            v-model:value="gender"
+                            v-model="gender"
                             required
                         />
                         <Checkbox
                             name="terms"
                             label="I agree to the terms and conditions"
-                            v-model:checked="agree"
+                            v-model="agree"
                             :error="agree ? false : errorMsg"
                             required
                         />
@@ -248,7 +250,7 @@ const startLoading = () => {
                                         { value: 'male', label: 'Male'},
                                         { value: 'female', label: 'Female'}
                                     ]"
-                                    v-model:value="gender"
+                                    v-model="gender"
                                     required
                                 /&gt;
                             </p>
@@ -256,7 +258,7 @@ const startLoading = () => {
                                 &lt;Checkbox 
                                     name="terms"
                                     label="I agree to the terms and conditions"
-                                    v-model:checked="agree"
+                                    v-model="agree"
                                     :error="agree ? false : errorMsg"
                                     required
                                 /&gt;
@@ -270,12 +272,12 @@ const startLoading = () => {
                             label="Notifications"
                             descriptionTrue="On"
                             descriptionFalse="Off"
-                            v-model:value="toggleNotifications"
+                            v-model="toggleNotifications"
                         />
                         <Toggle
                             label="Horizontal Mode"
                             horizontal
-                            v-model:value="toggleHorizontal"
+                            v-model="toggleHorizontal"
                         />
                     </div>
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
@@ -287,14 +289,14 @@ const startLoading = () => {
                                     label="Notifications"
                                     descriptionTrue="On"
                                     descriptionFalse="Off"
-                                    v-model:value="toggleNotifications"
+                                    v-model="toggleNotifications"
                                 /&gt;
                             </p>
                             <p class="mb-1">
                                 &lt;Toggle 
                                     label="Horizontal Mode"
                                     horizontal
-                                    v-model:value="toggleHorizontal"
+                                    v-model="toggleHorizontal"
                                 /&gt;
                             </p>
                         </div>
