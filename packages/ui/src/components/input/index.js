@@ -1,2 +1,6 @@
 export { default as InputText } from './InputText.vue'
 export { default as TextArea } from './TextArea.vue'
+export { default as FileUpload } from './FileUpload.vue'
+export { default as InputSelect } from './InputSelect.vue'
+export { default as RadioInput } from './RadioInput.vue'
+export { default as Checkbox } from './Checkbox.vue'

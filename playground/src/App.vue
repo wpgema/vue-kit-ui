@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from "vue";
-import { InputText, TextArea } from "../../packages/ui/src/components/input";
+import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox } from "../../packages/ui/src/components/input";
 import { Button } from "../../packages/ui/src/components/button";
 
 const username = ref("");
 const password = ref("");
 const description = ref("");
+const status = ref("");
+const files = ref("");
+const gender = ref("");
 const isLoading = ref(false);
 
 const startLoading = () => {
@@ -55,9 +58,9 @@ const startLoading = () => {
                     </div>
                 </div>
                 <!-- Code Usage -->
-                <div class="p-4 rounded-md bg-white border border-gray-200 overflow-x-auto">
+                <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto">
                     <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
-                    <div class="bg-slate-50 p-3 rounded text-sm font-mono text-slate-700">
+                    <div class="p-3 rounded text-sm font-mono text-slate-700">
                         <p class="mb-2">import { Button } from "../../packages/ui/src/components/button";</p>
                         <p class="mb-1">&lt;Button variant="primary"&gt;Primary&lt;/Button&gt;</p>
                         <p class="mb-1">&lt;Button variant="secondary"&gt;Secondary&lt;/Button&gt;</p>
@@ -79,7 +82,7 @@ const startLoading = () => {
                         <InputText
                             label="Username"
                             name="username"
-                            placeholder="Masukan Username"
+                            placeholder="Enter Username"
                             v-model:value="username"
                             :error="false"
                             required
@@ -87,21 +90,21 @@ const startLoading = () => {
                         <InputText
                             label="Password"
                             name="password"
-                            placeholder="Masukan Password"
+                            placeholder="Enter Password"
                             type="password"
                             v-model:value="password"
                             :error="false"
                         />
                     </div>
-                    <div class="p-4 rounded-md bg-white border border-gray-200 overflow-x-auto mt-7">
+                    <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
-                        <div class="bg-slate-50 p-3 rounded text-sm font-mono text-slate-700">
+                        <div class=" p-3 rounded text-sm font-mono text-slate-700">
                             <p class="mb-2">import { InputText } from "../../packages/ui/src/components/input";</p>
                             <p class="mb-1">
                                 &lt;InputText 
                                     label="Username"
                                     name="username"
-                                    placeholder="Masukan Username"
+                                    placeholder="Enter Username"
                                     v-model:value="username"
                                     :error="false"
                                     required
@@ -111,7 +114,7 @@ const startLoading = () => {
                                 &lt;InputText 
                                     label="Password"
                                     name="password"
-                                    placeholder="Masukan Password"
+                                    placeholder="Enter Password"
                                     type="password"
                                     v-model:value="password"
                                     :error="false"
@@ -123,28 +126,141 @@ const startLoading = () => {
                 <div>
                     <div class="flex gap-2 flex-wrap">
                         <TextArea
-                            label="Deskripsi"
+                            label="Description"
                             name="description"
                             v-model="description"
                             rows="5"
-                            placeholder="Masukkan deskripsi..."
+                            placeholder="Enter description..."
                         />
                     </div>
-                    <div class="p-4 rounded-md bg-white border border-gray-200 overflow-x-auto mt-7">
+                    <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
-                        <div class="bg-slate-50 p-3 rounded text-sm font-mono text-slate-700">
+                        <div class="p-3 rounded text-sm font-mono text-slate-700">
                             <p class="mb-2">import { TextArea } from "../../packages/ui/src/components/input";</p>
                             <p class="mb-1">
                                 &lt;TextArea 
-                                    label="Deskripsi"
+                                    label="Description"
                                     name="description"
                                     v-model="description"
                                     rows="5"
-                                    placeholder="Masukkan deskripsi..."
+                                    placeholder="Enter description..."
                                 /&gt;
                             </p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
+                <div>
+                    <div class="flex gap-2 flex-wrap">
+                        <InputSelect
+                            label="Filter Status"
+                            filter
+                            v-model:value="status"
+                            :options="[
+                                { value: 'active', label: 'Active' },
+                                { value: 'inactive', label: 'Inactive' },
+                            ]"
+                        />
+                    </div>
+                    <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
+                        <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
+                        <div class="p-3 rounded text-sm font-mono text-slate-700">
+                            <p class="mb-2">import { InputSelect } from "../../packages/ui/src/components/input";</p>
+                            <p class="mb-1">
+                                &lt;InputSelect 
+                                    label="Filter Status"
+                                    filter
+                                    v-model:value="status"
+                                    :options="[
+                                        { value: 'active', label: 'Active' },
+                                        { value: 'inactive', label: 'Inactive' },
+                                    ]"
+                                /&gt;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex gap-2 flex-wrap">
+                        <FileUpload
+                            label="Upload File"
+                            name="file"
+                            v-model="files"
+                            multiple
+                            accept=".pdf,.docx,.jpg,.png"
+                            required
+                        />
+                    </div>
+                    <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
+                        <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
+                        <div class="p-3 rounded text-sm font-mono text-slate-700">
+                            <p class="mb-2">import { FileUpload } from "../../packages/ui/src/components/input";</p>
+                            <p class="mb-1">
+                                &lt;FileUpload 
+                                    label="Upload File"
+                                    name="file"
+                                    v-model="files"
+                                    multiple
+                                    accept=".pdf,.docx,.jpg,.png"
+                                    required
+                                /&gt;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
+                <div>
+                    <div class="flex gap-2 flex-wrap">
+                        <RadioInput
+                            name="gender"
+                            label="Gender"
+                            :options="[
+                                { value: 'male', label: 'Male' },
+                                { value: 'female', label: 'Female' }
+                            ]"
+                            v-model:value="gender"
+                            required
+                        />
+                        <Checkbox
+                            name="terms"
+                            label="I agree to the terms and conditions"
+                            v-model:checked="agree"
+                            :error="agree ? false : errorMsg"
+                            required
+                        />
+                    </div>
+                    <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
+                        <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
+                        <div class="p-3 rounded text-sm font-mono text-slate-700">
+                            <p class="mb-1">import { RadioInput } from "../../packages/ui/src/components/input";</p>
+                            <p class="mb-2">import { Checkbox } from "../../packages/ui/src/components/input";</p>
+                            <p class="mb-1">
+                                &lt;RadioInput 
+                                    name="gender"
+                                    label="Gender"
+                                    :options="[
+                                        { value: 'male', label: 'Male'},
+                                        { value: 'female', label: 'Female'}
+                                    ]"
+                                    v-model:value="gender"
+                                    required
+                                /&gt;
+                            </p>
+                            <p class="mb-1">
+                                &lt;Checkbox 
+                                    name="terms"
+                                    label="I agree to the terms and conditions"
+                                    v-model:checked="agree"
+                                    :error="agree ? false : errorMsg"
+                                    required
+                                /&gt;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
                 </div>
             </div>
         </main>
