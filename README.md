@@ -30,7 +30,7 @@ This is **not** a full design system and **not** tied to any specific business d
 
 ---
 
-## � Requirements
+## 📝 Requirements
 
 * Vue 3
 * Tailwind CSS
@@ -39,7 +39,7 @@ This is **not** a full design system and **not** tied to any specific business d
 
 ---
 
-## �📦 Installation
+## 📦 Installation
 
 ```bash
 npm install vue-kit-ui
