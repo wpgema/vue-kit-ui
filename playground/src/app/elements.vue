@@ -22,9 +22,9 @@ import { Badge, LoadingDots, LoadingSpinner } from '../../../packages/ui/src/com
         <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
             <h1 class="text-3xl font-semibold">Elements Component Playground</h1>
 
-            <h2 class="text-xl font-medium">Badge Examples</h2>
             <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <div>
+                    <h2 class="text-xl font-semibold mb-3">Badge Examples</h2>
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2">
                         <Badge label="active" color="primary" size="sm" />
                         <Badge label="Primary" color="primary" size="md" />
@@ -49,7 +49,8 @@ import { Badge, LoadingDots, LoadingSpinner } from '../../../packages/ui/src/com
                     </div>
                 </div>
                 <div>
-                    <div class="flex items-center justify-evenly gap-4">
+                    <h2 class="text-xl font-semibold mb-3">Loading Examples</h2>
+                    <div class="flex items-center justify-evenly gap-2">
                         <LoadingDots />
                         <LoadingSpinner />
                     </div>

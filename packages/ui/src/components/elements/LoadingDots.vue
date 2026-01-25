@@ -8,8 +8,5 @@
     </div>
 </template>
 
-<script>
-    export default {
-        name: "LoadingDots",
-    };
+<script setup>
 </script>

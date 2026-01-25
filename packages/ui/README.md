@@ -257,6 +257,28 @@ A toggle switch component.
 | error            | String, Boolean  | -       | Error message |
 | required         | Boolean          | false   | Marks label with an asterisk |
 
+### Badge
+
+A status badge component.
+
+| Prop         | Type             | Default | Description          |
+| ------------ | ---------------- | ------- | -------------------- |
+| label        | String           | -       | **Required**. Badge text |
+| color        | String           | "gray"  | Badge color (`primary`, `success`, `warning`, `danger`, `gray`) |
+| size         | String           | "md"    | Badge size (`sm`, `md`, `lg`) |
+
+### LoadingDots
+
+A simple loading dots animation.
+
+No props. Wraps a centered flex container with 3 bouncing dots.
+
+### LoadingSpinner
+
+A simple loading spinner animation.
+
+No props. Wraps a centered flex container with a spinning circle.
+
 ---
 
 ## 🧪 Development & Playground
@@ -288,4 +310,4 @@ MIT License
 ## 👤 Author
 
 **M. Gema Maulana**
-Web Developer
+**Web Developer**

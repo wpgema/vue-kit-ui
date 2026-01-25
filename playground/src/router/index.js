@@ -6,9 +6,9 @@ const routes = [
         component: () => import('../app/index.vue'),
     },
     {
-        path: '/docs/form',
-        name: 'Form',
-        component: () => import('../app/form.vue'),
+        path: '/docs/forms',
+        name: 'Forms',
+        component: () => import('../app/forms.vue'),
     },
     {
         path: '/docs/elements',
@@ -16,7 +16,7 @@ const routes = [
         component: () => import('../app/elements.vue'),
     },
     {
-        path: '/form/test',
+        path: '/forms/test',
         name: 'FormTest',
         component: () => import('../app/formTest.vue'),
     },
