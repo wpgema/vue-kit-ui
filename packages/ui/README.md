@@ -42,7 +42,7 @@ This is **not** a full design system and **not** tied to any specific business d
 ## 📦 Installation
 
 ```bash
-npm install vue-kit-ui
+npm install @gemamaulana/vue-kit-ui
 ```
 
 > **Note:** Tailwind CSS must already be configured in your project.
@@ -282,6 +282,9 @@ No props. Wraps a centered flex container with a spinning circle.
 ---
 
 ## 🧪 Development & Playground
+
+For development and testing, please visit the GitHub repository:
+[https://github.com/wpgema/vue-kit-ui](https://github.com/wpgema/vue-kit-ui)
 
 This repository includes a **playground Vue app** used for:
 
