@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
-import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle } from "vue-kit-ui";
-import { Button } from "vue-kit-ui";
+import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle } from '@gemamaulana/vue-kit-ui';
+import { Button } from "@gemamaulana/vue-kit-ui";
 
 const username = ref("");
 const password = ref("");

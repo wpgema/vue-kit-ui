@@ -310,4 +310,5 @@ MIT License
 ## 👤 Author
 
 **M. Gema Maulana**
-**Web Developer**
+
+Web Developer

@@ -1,5 +1,5 @@
 {
-    "name": "vue-kit-ui",
+    "name": "@gemamaulana/vue-kit-ui",
     "version": "0.1.0",
     "description": "A reusable Vue 3 UI component library designed for Tailwind CSS",
     "type": "module",

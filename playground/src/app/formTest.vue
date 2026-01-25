@@ -1,16 +1,16 @@
 <script setup>
 import { ref } from "vue";
-import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle, Button } from "vue-kit-ui";
+import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle, Button } from '@gemamaulana/vue-kit-ui';
 
 const formData = ref({
-  fullName: "",
-  email: "",
-  bio: "",
-  department: "",
-  experience: "",
-  remote: false,
-  resume: [],
-  agree: false
+    fullName: "",
+    email: "",
+    bio: "",
+    department: "",
+    experience: "",
+    remote: false,
+    resume: [],
+    agree: false
 });
 
 const departmentOptions = [

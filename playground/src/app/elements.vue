@@ -1,5 +1,5 @@
 <script setup>
-import { Badge, LoadingDots, LoadingSpinner } from '../../../packages/ui/src/components/elements';
+import { Badge, LoadingDots, LoadingSpinner } from '@gemamaulana/vue-kit-ui';
 
 </script>
 
