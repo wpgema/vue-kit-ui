@@ -7,8 +7,18 @@ const routes = [
     },
     {
         path: '/docs/form',
-        name: 'Docs',
+        name: 'Form',
         component: () => import('../app/form.vue'),
+    },
+    {
+        path: '/docs/elements',
+        name: 'Elements',
+        component: () => import('../app/elements.vue'),
+    },
+    {
+        path: '/form/test',
+        name: 'FormTest',
+        component: () => import('../app/formTest.vue'),
     },
 ];
 

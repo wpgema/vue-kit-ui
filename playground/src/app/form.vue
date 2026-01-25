@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { InputText, TextArea, InputSelect, FileUpload, RadioInput, Checkbox, Toggle } from "vue-kit-ui";
 import { Button } from "vue-kit-ui";
 
@@ -35,7 +35,7 @@ const startLoading = () => {
                         <h1 class="text-2xl font-bold">Vue Kit UI</h1>
                         <h2 class="text-sm font-semibold">Developer Page</h2>
                     </div>
-                    <p>Current Version: 1.0.0</p>
+                    <p>Current Version: 0.1.0</p>
                 </div>
             </div>
         </header>
