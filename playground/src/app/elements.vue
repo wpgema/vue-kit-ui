@@ -1,22 +1,14 @@
 <script setup>
 import { Badge, LoadingDots, LoadingSpinner } from '@gemamaulana/vue-kit-ui';
+import Header from "../components/header.vue";
+import Footer from "../components/footer.vue";
 
 </script>
 
 <template>
     <div class="min-h-screen flex flex-col text-gray-900">
         <!-- Header -->
-        <header class="bg-indigo-600 shadow-sm sticky top-0 z-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-20 items-center text-white">
-                    <div class="flex flex-col">
-                        <h1 class="text-2xl font-bold">Vue Kit UI</h1>
-                        <h2 class="text-sm font-semibold">Developer Page</h2>
-                    </div>
-                    <p>Current Version: 0.1.0</p>
-                </div>
-            </div>
-        </header>
+        <Header />
 
         <!-- Main Content -->
         <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
@@ -67,12 +59,6 @@ import { Badge, LoadingDots, LoadingSpinner } from '@gemamaulana/vue-kit-ui';
         </main>
 
         <!-- Footer -->
-        <footer class="bg-indigo-600 border-t border-indigo-700 mt-auto">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <p class="text-center text-sm text-white">
-                    &copy; 2024 UI Vue Kit. All rights reserved.
-                </p>
-            </div>
-        </footer>
+        <Footer />
     </div>
 </template>
