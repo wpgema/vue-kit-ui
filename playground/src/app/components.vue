@@ -12,7 +12,7 @@ import Footer from "../components/footer.vue";
 
         <!-- Main Content -->
         <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-            <h1 class="text-3xl font-semibold">Elements Playground</h1>
+            <h1 class="text-3xl font-semibold">Components Playground</h1>
 
             <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
                 <div>

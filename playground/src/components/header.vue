@@ -13,6 +13,7 @@
                 <nav class="hidden md:flex space-x-8">
                     <router-link to="/" class="hover:text-indigo-200 transition-colors" active-class="text-indigo-200 font-semibold">Home</router-link>
                     <router-link to="/docs/elements" class="hover:text-indigo-200 transition-colors" active-class="text-indigo-200 font-semibold">Elements</router-link>
+                    <router-link to="/docs/components" class="hover:text-indigo-200 transition-colors" active-class="text-indigo-200 font-semibold">Components</router-link>
                     <router-link to="/docs/forms" class="hover:text-indigo-200 transition-colors" active-class="text-indigo-200 font-semibold">Forms</router-link>
                     <router-link to="/forms/test" class="hover:text-indigo-200 transition-colors" active-class="text-indigo-200 font-semibold">Form Test</router-link>
                 </nav>
