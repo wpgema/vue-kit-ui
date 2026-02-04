@@ -60,7 +60,7 @@ const startLoading = () => {
                 <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto">
                     <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                     <div class="p-3 rounded text-sm font-mono text-slate-700">
-                        <p class="mb-2">import { Button } from "../../packages/ui/src/components/button";</p>
+                        <p class="mb-2">import { Button } from "../../../packages/ui/src/components/button";</p>
                         <p class="mb-1">&lt;Button variant="primary"&gt;Primary&lt;/Button&gt;</p>
                         <p class="mb-1">&lt;Button variant="secondary"&gt;Secondary&lt;/Button&gt;</p>
                         <p class="mb-1">&lt;Button variant="outline"&gt;Outline&lt;/Button&gt;</p>
@@ -98,7 +98,7 @@ const startLoading = () => {
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class=" p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { InputText } from "../../packages/ui/src/components/inputs";</p>
+                            <p class="mb-2">import { InputText } from "../../../packages/ui/src/components/inputs";</p>
                             <p class="mb-1">
                                 &lt;InputText 
                                     label="Username"
@@ -135,7 +135,7 @@ const startLoading = () => {
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { TextArea } from "../../packages/ui/src/components/inputs";</p>
+                            <p class="mb-2">import { TextArea } from "../../../packages/ui/src/components/inputs";</p>
                             <p class="mb-1">
                                 &lt;TextArea 
                                     label="Description"
@@ -165,7 +165,7 @@ const startLoading = () => {
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { InputSelect } from "../../packages/ui/src/components/inputs";</p>
+                            <p class="mb-2">import { InputSelect } from "../../../packages/ui/src/components/inputs";</p>
                             <p class="mb-1">
                                 &lt;InputSelect 
                                     label="Filter Status"
@@ -194,7 +194,7 @@ const startLoading = () => {
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { FileUpload } from "../../packages/ui/src/components/inputs";</p>
+                            <p class="mb-2">import { FileUpload } from "../../../packages/ui/src/components/inputs";</p>
                             <p class="mb-1">
                                 &lt;FileUpload 
                                     label="Upload File"
@@ -233,8 +233,8 @@ const startLoading = () => {
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-1">import { RadioInput } from "../../packages/ui/src/components/inputs";</p>
-                            <p class="mb-2">import { Checkbox } from "../../packages/ui/src/components/inputs";</p>
+                            <p class="mb-1">import { RadioInput } from "../../../packages/ui/src/components/inputs";</p>
+                            <p class="mb-2">import { Checkbox } from "../../../packages/ui/src/components/inputs";</p>
                             <p class="mb-1">
                                 &lt;RadioInput 
                                     name="gender"
@@ -276,7 +276,7 @@ const startLoading = () => {
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { Toggle } from "../../packages/ui/src/components/inputs";</p>
+                            <p class="mb-2">import { Toggle } from "../../../packages/ui/src/components/inputs";</p>
                             <p class="mb-1">
                                 &lt;Toggle 
                                     label="Notifications"

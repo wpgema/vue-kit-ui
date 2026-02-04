@@ -29,7 +29,7 @@ import Footer from "../components/footer.vue";
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="p-3 rounded text-sm font-mono text-slate-700">
-                            <p class="mb-2">import { Badge } from "../../packages/ui/src/components/elements";</p>
+                            <p class="mb-2">import { Badge } from "../../../packages/ui/src/components/elements";</p>
                             <p class="mb-1">&lt;Badge label="active" color="primary" size="sm" /&gt;</p>
                             <p class="mb-1">&lt;Badge label="Primary" color="primary" size="md" /&gt;</p>
                             <p class="mb-1">&lt;Badge label="Success" color="success" size="md" /&gt;</p>
@@ -49,7 +49,7 @@ import Footer from "../components/footer.vue";
                     <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto">
                         <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                         <div class="p-3 rounded text-sm font-mono text-slate-700">
-                            <p>import { LoadingDots, LoadingSpinner } from "../../packages/ui/src/components/elements";</p>
+                            <p>import { LoadingDots, LoadingSpinner } from "../../../packages/ui/src/components/elements";</p>
                             <p class="mt-2">&lt;LoadingDots /&gt;</p>
                             <p class="mt-1">&lt;LoadingSpinner /&gt;</p>
                         </div>
