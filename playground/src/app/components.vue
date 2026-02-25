@@ -23,7 +23,7 @@ import Footer from "../components/footer.vue";
                 <div class="p-4 rounded-md bg-slate-50 border border-gray-200 overflow-x-auto mt-7">
                     <p class="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-3">Usage</p>
                     <div class="p-3 rounded text-sm font-mono text-slate-700">
-                        <p class="mb-2">import { Badge } from "../../../packages/ui/src/components/card";</p>
+                        <p class="mb-2">import { Card } from "../../../packages/ui/src/components/card";</p>
                         <p class="mt-2">&lt;Card title="Total Revenue" value="$45,200" percentage="+5.2%" color="success" icon="trending-up" /&gt;</p>
                         <p class="mt-2">&lt;Card title="Active Users" value="12,340" percentage="+12.5%" color="primary" /&gt; &lt;!-- default icon --&gt;</p>
                         <p class="mt-2">&lt;Card title="Bounce Rate" value="42.5%" percentage="-2.4%" color="danger" icon="info" /&gt;</p>
