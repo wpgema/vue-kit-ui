@@ -57,17 +57,21 @@ Update your `tailwind.config.js` (or `tailwind.config.ts`) to include the `vue-k
 
 ```js
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}", 
-    // Add this line to scan vue-kit-ui components:
-    "./node_modules/vue-kit-ui/**/*.{vue,js,ts,jsx,tsx}"
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+const path = require('path')
+
+const vueKitUiEntry = require.resolve('@gemamaulana/vue-kit-ui')
+const vueKitUiDist = path.join(path.dirname(vueKitUiEntry), '*/.{js,cjs,mjs}')
+
+module.exports = {
+    content: [
+        './index.html',
+        './src/*/.{vue,js,ts,jsx,tsx}',
+        vueKitUiDist,
+    ],
+    theme: {
+        extend: {},
+    },
+    plugins: [],
 }
 ```
 
