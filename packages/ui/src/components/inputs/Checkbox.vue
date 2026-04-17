@@ -35,13 +35,13 @@ function handleClick(e) {
                         ? 'border-red-500'
                         : 'border-gray-400 hover:border-gray-600'">
                 <input type="checkbox" :id="name" :name="name"
-                    class="appearance-none absolute w-full h-full cursor-pointer rounded-md outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500"
+                    class="appearance-none absolute w-full h-full cursor-pointer rounded-md focus:border-gray-500 focus:ring-2 focus:ring-gray-200"
                     :checked="isChecked"
                     @change="handleChange"
                     @click="handleClick"
                     :disabled="disabled" :readonly="readonly" />
                 <svg v-if="isChecked" xmlns="http://www.w3.org/2000/svg"
-                    class="w-3 h-3 text-white bg-gray-800 rounded-sm pointer-events-none" viewBox="0 0 20 20" fill="currentColor">
+                    class="w-3 h-3 text-white bg-indigo-700 rounded-sm pointer-events-none" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293A1 1 0 003.293 10.707l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" />
                 </svg>

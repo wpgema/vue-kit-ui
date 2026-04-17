@@ -71,12 +71,12 @@ onBeforeUnmount(() => {
             @mousedown.prevent="toggle"
             @keydown="onKeydown"
             class="relative flex w-full items-center justify-between rounded-lg border px-3 py-2 bg-white cursor-pointer
-                transition-all outline-none focus:ring-2 focus:ring-indigo-500
+                transition-all outline-none focus:ring-2  focus-within:border-transparent focus-within:ring-2 focus-within:ring-gray-200
                 "
             :class="{
                 'border-red-300 ring-1 ring-red-200': error,
-                'ring-2 ring-indigo-200 border-indigo-400': open && !error,
-                'border-gray-300 hover:border-gray-400': !open && !error
+                'ring-2 ring-gray-200': open && !error,
+                'border-gray-300': !open && !error
             }"
         >
             <span
